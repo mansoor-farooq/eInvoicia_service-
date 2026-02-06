@@ -1,0 +1,23 @@
+# Node modules (agar JS packages use ho rahe hain)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.suo
+*.user
+*.log
+
+# Build / Temp files
+dist/
+build/
+*.tmp
+t 
+k 
+
+# Environment / secret files
+.env
