@@ -425,6 +425,31 @@ display: none;
             overflow: hidden;
         }
 
+        .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 150px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
         .fbr-section::before {
             content: '';
             position: absolute;
@@ -522,7 +547,7 @@ display: none;
             }
             
             .hero-stats {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 1.5rem;
             }
         }
