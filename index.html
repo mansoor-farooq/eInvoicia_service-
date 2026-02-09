@@ -207,60 +207,85 @@
         }
 
         /* Enhanced Hero Section */
-        .hero {
-            /* background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), */
-            /* url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); */
-          background-image:   url(./src/Hero-MSOffice-1920x750-2x_VP5-1920x720.png);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            padding: 160px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
+.hero {
+position: relative;
+width: 100%;
+min-height: 600px;
+display: flex;
+align-items: center;
+background-image: url("./src/Web-Banner.jpg.jpeg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(45, 91, 227, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
-        }
+.hero::before {
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(
+rgba(0,0,0,0.55),
+rgba(0,0,0,0.35)
+);
+z-index: 1;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+.hero-content {
+position: relative;
+z-index: 2;
+max-width: 720px;
+margin-left: 80px;
+color: #ffffff;
+}
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ffffff, #e8f1ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.hero h1 {
+font-size: 52px;
+font-weight: 700;
+line-height: 1.15;
+margin-bottom: 16px;
+color: #ffffff;
+}
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
+.hero p {
+font-size: 18px;
+line-height: 1.6;
+color: rgba(255,255,255,0.9);
+max-width: 600px;
+}
 
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+
+
+@media (max-width: 768px) {
+.hero {
+min-height: auto;
+padding: 120px 20px 80px;
+background-image: url("./src/Mobile-Banner.jpg.jpeg");
+}
+
+.hero-content {
+margin-left: 0;
+text-align: center;
+}
+
+.hero h1 {
+font-size: 34px;
+}
+
+.hero p {
+font-size: 16px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.hero .d-flex {
+flex-direction: column;
+align-items: center;
+}
+
+.hero-stats {
+display: none;
+}
+}
 
         .stat-item {
             text-align: center;
@@ -615,10 +640,10 @@
                                 <div class="stat-number">99.9%</div>
                                 <div class="stat-label">Uptime Guarantee</div>
                             </div>
-                            <div class="stat-item">
+                            <!-- <div class="stat-item">
                                 <div class="stat-number">24/7</div>
                                 <div class="stat-label">Support Available</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -744,7 +769,7 @@
                                 Certified</span>
                             <h2 class="text-white mb-4 slide-in-left">100% FBR
                                 IRIS Integration</h2>
-                            <p class="lead text-light mb-5 slide-in-left">Stay
+                            <p class="lead text-dark mb-5 slide-in-left">Stay
                                 fully compliant with Pakistan's tax regulations.
                                 Our system ensures real-time invoice submission
                                 and automatic PSID generation.</p>
@@ -833,21 +858,32 @@
                             </div>
                         </div>
 
-                        <!-- <div class="col-lg-6 text-center">
+                        <div class="col-lg-6 text-center">
                             <div
                                 class="p-5 bg-white rounded-3 shadow-lg slide-in-right">
                                 <div class="mb-4">
-                                    <i
-                                        class="fas fa-check-circle fa-4x text-success mb-4"></i>
-                                    <h4 class="mb-4">Success Story</h4>
-                                    <blockquote class="blockquote">
-                                        <p
-                                            class="lead">"A retail chain in Karachi processes 600+ invoices daily with Digital Einvoicia. Zero rejections from FBR, saving hours of manual work every day."</p>
+                                    <!-- FBR Pakistan logo - use correct path and reliable online source first for testing -->
+                                    <img
+                                        src="./src/FBR-Logo.png"
+                                        alt="FBR Pakistan Logo"
+                                        class="img-fluid mb-4"
+                                        style="max-height: 140px; width: auto; display: block; margin: 0 auto;">
+                                    <!-- If local file still broken, test with this public transparent PNG link (remove later) -->
+                                    <!-- <img src="https://seeklogo.com/images/F/fbr-pakistan-logo-227419.png" alt="FBR Pakistan" class="img-fluid mb-4" style="max-height: 140px; width: auto; display: block; margin: 0 auto;"> -->
+
+                                    <h4 class="mb-4 text-dark">Success
+                                        Story</h4>
+                                    <blockquote class="blockquote text-start">
+                                        <p class="lead text-muted">
+                                            "A retail chain in Karachi processes 600+ invoices daily with Digital Einvoicia. Zero rejections from FBR, saving hours of manual work every day."
+                                        </p>
                                         <footer
-                                            class="blockquote-footer mt-3">
-                                            <cite
-                                                title="Source Title">Operations
-                                                Manager</cite></footer>
+                                            class="blockquote-footer mt-3 text-muted">
+                                            Operations Manager, Karachi Retail
+                                            Chain
+                                            <cite title="FBR Pakistan"> – FBR
+                                                Pakistan Compliant</cite>
+                                        </footer>
                                     </blockquote>
                                 </div>
                                 <a href="#contact"
@@ -857,7 +893,7 @@
                                     Demo
                                 </a>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
                 </div>
@@ -1033,8 +1069,8 @@
                                             Message
                                         </button>
                                     </div>
-                                    <p class="text-center text-muted mt-3">We
-                                        respond within 2 business hours</p>
+                                    <!-- <p class="text-center text-muted mt-3">We
+                                        respond within 2 business hours</p> -->
                                 </form>
                             </div>
                         </div>
