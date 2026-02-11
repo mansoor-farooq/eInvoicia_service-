@@ -19,33 +19,44 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap"
             rel="stylesheet">
 
-        <link rel="stylesheet" href="css/bootstrap-icons.css">
+        <!-- <link rel="stylesheet" href="css/bootstrap-icons.css">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css"> -->
         <!-- EmailJS SDK -->
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-        <script type="text/javascript"
-            src="js/bootstrap.bundle.min.js"></script>
+        <!-- <script type="text/javascript"
+            src="js/bootstrap.bundle.min.js"></script> -->
 
         <style>
 
-:root {
-        --primary-blue: #2563eb;
-        --primary-dark: #1d4ed8;
-        --secondary-blue: #eff6ff;
-        --aliceblue: #f8fbff;
-        --light-gray: #f1f5f9;
-        --dark-gray: #0f172a;
-        --accent-green: #10b981;
-        --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-        --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
-        --shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
-    }
+.hero .stat-number {
+color: white;
+}
 
+:root {
+--primary-blue: #2d5be3;
+--primary-dark: #1e40af;
+--secondary-blue: #e8f1ff;
+--aliceblue: #ffffff;
+--light-gray: #f8fafc;
+--dark-gray: #1e293b;
+
+--section-blue-light: #f0f6ff;
+--section-green-light: #f0fdf4;
+--section-violet-light: #f5f3ff;
+
+--accent-green: #10b981;
+--gradient-primary: linear-gradient(135deg, #2d5be3 0%, #1e40af 100%);
+--gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+--shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+--shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+--shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
+--shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+
+
+}
     * {
         margin: 0;
         padding: 0;
@@ -62,15 +73,24 @@
 
     .navbar {
         background: rgba(248,251,255,0.98);
-        border-bottom: 1px solid rgba(229,231,235,0.5);
+        /* border-bottom: 1px solid rgba(229,231,235,0.5); */
         box-shadow: var(--shadow-sm);
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
+         padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(45,91,227,0.08);
     }
 
-    .navbar.scrolled {
-        box-shadow: var(--shadow-lg);
-    }
+ 
+
+ .navbar.scrolled {
+            padding: 0.6rem 0;
+            /* box-shadow: var(--shadow-lg);
+              box-shadow: var(--shadow-lg); */
+              box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.98);
+        }
+   
 
     .nav-link:hover,
     .nav-link.active {
@@ -92,9 +112,11 @@
     .hero {
         position: relative;
         width: 100%;
+ justify-content: flex-start;
+text-align: left;
+padding: 120px 0;
         min-height: 640px;
-        display: flex;
-        align-items: center;
+        
         background-image: url("./src/new logo.jpeg");
         background-size: cover;
         background-position: center;
@@ -112,12 +134,52 @@
     .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 780px;
-        margin: 0 auto;
-        padding: 0 20px;
+        /* max-width: 780px; */
+        margin: 0;
+      /* padding-left: 80px; */
+      padding-left: calc(1.5rem + 20px);
+        text-align: left;
+        max-width: 650px;
+        display: flex-start ;
+        /* padding: 0 20px; */
         color: white;
-        text-align: center;
+/* background-color: #0f172a; */
     }
+
+    .hero-stats {
+display: flex;
+gap: 3rem;
+margin-top: 2rem;
+justify-content: flex-start;
+}
+
+.stat-item {
+text-align: left;
+   min-width: 150px;
+}
+.hero .d-flex {
+justify-content: flex-start;
+       
+        gap: 1rem;
+        flex-wrap: wrap;
+}
+
+.fade-up {
+opacity: 0;
+transform: translateY(40px);
+animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
 
     .hero h1 {
         font-size: 3.5rem;
@@ -157,17 +219,12 @@
         margin: 0 auto 2rem;
     }
 
-    .hero .d-flex {
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
+   
     @media (max-width: 768px) {
         .hero {
             min-height: auto;
             padding: 140px 20px 100px;
-            background-image: url("./src/Mobile-Banner.jpg.jpeg");
+            background-image: url("./src/mobile.jpeg");
             background-position: center 30%;
         }
 
@@ -237,13 +294,7 @@
         color: rgba(255,255,255,0.8);
     }
 
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 4rem;
-        margin-top: 4rem;
-        flex-wrap: wrap;
-    }
+ 
 
    .footer {
     background: #ffffff;
@@ -276,26 +327,7 @@
     }
 }
 
-
-
-
-
-        :root {
-            --primary-blue: #2d5be3;
-            --primary-dark: #1e40af;
-            --secondary-blue: #e8f1ff;
-            --aliceblue: #ffffff;
-            --light-gray: #f8fafc;
-            --dark-gray: #1e293b;
-            --accent-green: #10b981;
-            --gradient-primary: linear-gradient(135deg, #2d5be3 0%, #1e40af 100%);
-            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
+     
         * {
             margin: 0;
             padding: 0;
@@ -310,21 +342,10 @@
             overflow-x: hidden;
         }
 
-        /* Enhanced Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
-            padding: 0.8rem 0;
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
+       
+       
 
-        .navbar.scrolled {
-            padding: 0.6rem 0;
-            box-shadow: var(--shadow-lg);
-            background: rgba(255, 255, 255, 0.98);
-        }
+
 
         .navbar-brand {
             display: flex;
@@ -461,13 +482,6 @@
         .main-content {
             padding-top: 85px;
         }
-
-        /* Enhanced Hero Section */
-
-
-
-
-
         /* Enhanced Buttons */
         .btn-primary {
             background: var(--gradient-primary);
@@ -528,21 +542,28 @@
             margin: 0 auto 4rem;
             line-height: 1.6;
         }
+.featured-card {
+border: 2px solid var(--primary-blue);
+transform: scale(1.05);
+box-shadow: 0 25px 60px rgba(45,91,227,0.25);
+}
+.contact-form {
+background: white;
+border: 1px solid rgba(45,91,227,0.1);
+box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+}
 
-        /* Enhanced Cards - PRICE REMOVED */
-        .card {
-            border: none;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s ease;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(229, 231, 235, 0.5);
-        }
+       .card {
+background: white;
+backdrop-filter: blur(6px);
+border: 1px solid rgba(45, 91, 227, 0.08);
+box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
 
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-xl);
-        }
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 50px rgba(45,91,227,0.15);
+}
 
         .card-icon {
             width: 80px;
@@ -584,7 +605,8 @@
 
       /* Enhanced FBR Section - now light theme with aliceblue */
 .fbr-section {
-    background: var(--aliceblue);
+    /* background: var(--aliceblue); */
+    background: var(--section-green-light);
     color: var(--dark-gray);
     position: relative;
     padding: 100px 0;
@@ -648,10 +670,10 @@
 
    
 
-.stat-item {
+/* .stat-item {
     text-align: center;
     min-width: 150px;
-}
+} */
 
 .stat-number {
     font-size: 2.5rem;
@@ -693,6 +715,8 @@
             background: aliceblue;
             border-radius: 12px;
             padding: 2rem;
+            
+box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             height: 100%;
             transition: all 0.3s ease;
             border: 1px solid rgba(229, 231, 235, 0.8);
@@ -700,8 +724,9 @@
 
         .client-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            /* box-shadow: var(--shadow-lg); */
             border-color: var(--primary-blue);
+         box-shadow: 0 20px 45px rgba(45,91,227,0.15);
         }
 
         .client-card img {
@@ -736,8 +761,18 @@
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(45, 91, 227, 0.1);
         }
-
+.clients-bg {
+background: #ffffff;
+}
      
+.services-bg {
+background: var(--section-blue-light); 
+ }
+
+.contact-bg {
+background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
+}
+
 
    </style>
     </head>
@@ -768,7 +803,7 @@
                                 href="#contact">Contact</a></li>
                         <li class="nav-item">
                             <a class="nav-link" target="_blank"
-                                href="http://192.168.1.9/digitaleinvoicia/Identity/Account/Login?ReturnUrl=%2Fdigitaleinvoicia">Sign
+                                href="http://app.einvoicia.com:4449/">Sign
                                 In</a>
                         </li>
                         <li class="nav-item">
@@ -784,43 +819,57 @@
 
         <div class="main-content">
 
-            <section class="hero" id="home">
-                <div class="container">
-                    <div class="hero-content">
-                        <h1>
-                            <span class="typewriter">Digital e-Invoicia</span>
-                        </h1>
-                        <p>
-                            Seamlessly integrated with FBR IRIS. Generate,
-                            manage, and submit invoices with unmatched ease and
-                            reliability.
-                        </p>
-                        <div class="d-flex">
-                            <a href="#contact" class="btn btn-primary btn-lg">
-                                <i class="fas fa-rocket me-2"></i>Start Free
-                                Trial
-                            </a>
-                            <a href="#services"
-                                class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-play-circle me-2"></i>View Demo
-                            </a>
-                        </div>
-                        <div class="hero-stats mt-5">
-                            <div class="stat-item">
-                                <div class="stat-number">3+</div>
-                                <div class="stat-label">Businesses Trust
-                                    Us</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">99.9%</div>
-                                <div class="stat-label">Uptime Guarantee</div>
+            <section class="hero d-flex align-items-center text-white"
+                id="home"> <div class="container"> <div class="row">
+                        <div
+                            class="col-lg-7"> <div class="hero-content"> <h1
+                                    class="display-4 fw-bold mb-3 fade-up">
+                                    <span class="typewriter">Digital
+                                        e-Invoicia</span> </h1>
+                                <p class="lead mb-4 fade-up delay-1">
+                                    Seamlessly integrated with FBR IRIS.
+                                    Generate,
+                                    manage, and submit invoices with unmatched
+                                    ease
+                                    and reliability.
+                                </p>
+
+                                <div
+                                    class="d-flex flex-column flex-md-row gap-3 mb-5 fade-up delay-2">
+                                    <a href="#contact"
+                                        class="btn btn-primary btn-lg px-4">
+                                        <i class="fas fa-rocket me-2"></i>
+                                        Start Free Trial
+                                    </a>
+
+                                    <a href="#services"
+                                        class="btn btn-outline-light btn-lg px-4">
+                                        <i class="fas fa-play-circle me-2"></i>
+                                        View Demo
+                                    </a>
+                                </div>
+
+                                <div class="hero-stats fade-up delay-3">
+                                    <div class="stat-item">
+                                        <div class="stat-number">3+</div>
+                                        <div class="stat-label">Businesses Trust
+                                            Us</div>
+                                    </div>
+
+                                    <div class="stat-item">
+                                        <div class="stat-number">99.9%</div>
+                                        <div class="stat-label">Uptime
+                                            Guarantee</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
             <!-- Enhanced Services Section - WITHOUT PRICES -->
-            <section class="section" id="services">
+            <section class="section services-bg " id="services">
                 <div class="container">
                     <h2 class="section-title fade-in">Our Services</h2>
                     <p class="section-subtitle fade-in">Choose the perfect plan
@@ -1067,7 +1116,7 @@
             </section>
 
             <!-- Enhanced Clients Section -->
-            <section class="section" id="clients">
+            <section class="section clients-bg" id="clients">
                 <div class="container">
                     <h2 class="section-title fade-in">Trusted by Industry
                         Leaders</h2>
@@ -1106,45 +1155,6 @@
                                     Processing</small>
                             </div>
                         </div>
-                        <!-- Client 4 -->
-                        <!-- <div class="col-6 col-md-4 col-lg-2">
-                            <div class="client-card text-center fade-in">
-                                <div
-                                    class="bg-light rounded-3 p-4 mb-3 d-flex align-items-center justify-content-center"
-                                    style="height: 70px;">
-                                    <i
-                                        class="fas fa-building fa-2x text-primary"></i>
-                                </div>
-                                <h6 class="mb-2">Textile Mills Ltd</h6>
-                                <small class="text-muted">Manufacturing</small>
-                            </div>
-                        </div> -->
-                        <!-- Client 5 -->
-                        <!-- <div class="col-6 col-md-4 col-lg-2">
-                            <div class="client-card text-center fade-in">
-                                <div
-                                    class="bg-light rounded-3 p-4 mb-3 d-flex align-items-center justify-content-center"
-                                    style="height: 70px;">
-                                    <i
-                                        class="fas fa-truck fa-2x text-primary"></i>
-                                </div>
-                                <h6 class="mb-2">Logistics Pro</h6>
-                                <small class="text-muted">Transport</small>
-                            </div>
-                        </div> -->
-                        <!-- Client 6 -->
-                        <!-- <div class="col-6 col-md-4 col-lg-2">
-                            <div class="client-card text-center fade-in">
-                                <div
-                                    class="bg-light rounded-3 p-4 mb-3 d-flex align-items-center justify-content-center"
-                                    style="height: 70px;">
-                                    <i
-                                        class="fas fa-laptop-medical fa-2x text-primary"></i>
-                                </div>
-                                <h6 class="mb-2">MediCare Plus</h6>
-                                <small class="text-muted">Healthcare</small>
-                            </div>
-                        </div> -->
 
                     </div>
 
@@ -1159,7 +1169,7 @@
             </section>
 
             <!-- Enhanced Contact Section -->
-            <section class="section bg-light" id="contact">
+            <section class="section contact-bg " id="contact">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
