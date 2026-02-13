@@ -32,21 +32,18 @@
 
         <style>
 :root {
-    --primary-blue: #2d5be3;
-    --primary-dark: #1e40af;
-    --secondary-blue: #e8f1ff;
-    --aliceblue: #ffffff;
-    --dark-gray: #1e293b;
-    --accent-green: #10b981;
-    --gradient-primary: linear-gradient(135deg, #2d5be3 0%, #1e40af 100%);
-    --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-    --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
-    --shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
-    --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
-    --section-blue-light: #f0f6ff;
-    --section-green-light: #f0fdf4;
-    --section-violet-light: #f5f3ff;
+--primary: #2563eb;
+--primary-dark: #1d4ed8;
+--light-bg: #f9fbff;
+--section-bg: #f4f8ff;
+--text-dark: #0f172a;
+--border-soft: #e6edf7;
+
+--radius-lg: 20px;
+--radius-xl: 28px;
+
+--shadow-soft: 0 8px 25px rgba(37,99,235,0.08);
+--shadow-hover: 0 18px 45px rgba(37,99,235,0.15);
 }
 
 * {
@@ -55,21 +52,30 @@
     box-sizing: border-box;
 }
 
+.section {
+padding: 120px 0;
+}
+
 body {
     font-family: 'Inter', system-ui, sans-serif;
-    color: var(--dark-gray);
-    background: var(--aliceblue);
+    background: var(--light-bg);
+color: var(--text-dark);
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
 .navbar {
-    background: rgba(248,251,255,0.98);
+    /* background: rgba(248,251,255,0.98); */
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     transition: all 0.3s ease;
     padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(45,91,227,0.08);
+    /* border-bottom: 1px solid rgba(45,91,227,0.08); */
+
+background: rgba(255,255,255,0.85);
+backdrop-filter: blur(12px);
+border-radius: 0 0 20px 20px;
+
 }
 
 .navbar.scrolled {
@@ -166,7 +172,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4));
+    background: linear-gradient(rgba(15,23,42,0.65), rgba(15,23,42,0.45));
     z-index: 1;
 }
 
@@ -272,17 +278,21 @@ body {
     line-height: 1.6;
 }
 
+
 .card {
-    background: white;
-    border-radius: 12px;
-    border: 1px solid rgba(45, 91, 227, 0.08);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    transition: all 0.3s ease;
+    border-radius: var(--radius-xl);
+border: 1px solid var(--border-soft);
+box-shadow: var(--shadow-soft);
+transition: 0.4s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(45,91,227,0.15);
+   transform: translateY(-8px);
+box-shadow: var(--shadow-hover);
+}
+
+.card-header {
+padding-top: 2.5rem;
 }
 
 .card-icon {
@@ -300,21 +310,22 @@ body {
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
-    border: none;
-    padding: 1rem 2.5rem;
-    font-weight: 600;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(45,91,227,0.3);
-    transition: all 0.3s ease;
+background: linear-gradient(90deg, #2563eb, #1d4ed8);
+border: none;
+border-radius: 14px;
+font-weight: 600;
+transition: all 0.25s ease;
+}
+.btn-primary:hover {
+transform: translateY(-2px);
+box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    background: var(--primary-dark);
-    box-shadow: 0 8px 25px rgba(45,91,227,0.4);
+.btn-outline-primary {
+border-radius: 14px;
+border: 2px solid var(--primary);
 }
+
 
 .btn-outline-light {
     padding: 1rem 2.5rem;
@@ -359,19 +370,76 @@ body {
 }
 
 .contact-form {
-    background: var(--aliceblue);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: var(--shadow-xl);
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(12px);
+border-radius: 20px;
+padding: 45px;
+box-shadow: 0 25px 60px rgba(30, 41, 59, 0.12);
+margin-top: 40px;
+position: relative;
+z-index: 2;
+}
+.contact-bg {
+background: linear-gradient(180deg, #f4f8ff 0%, #eaf2ff 100%);
+position: relative;
+overflow: hidden;
+}
+
+
+
+.section {
+padding: 120px 0;
+}
+
+.section-title {
+margin-bottom: 20px;
+}
+
+.section-subtitle {
+margin-bottom: 50px;
+}
+
+
+
+.contact-bg::before {
+content: "";
+position: absolute;
+width: 400px;
+height: 400px;
+background: rgba(37, 99, 235, 0.08);
+border-radius: 50%;
+top: -120px;
+right: -120px;
+filter: blur(80px);
+}
+
+.contact-bg::after {
+content: "";
+position: absolute;
+width: 300px;
+height: 300px;
+background: rgba(14, 165, 233, 0.08);
+border-radius: 50%;
+bottom: -100px;
+left: -100px;
+filter: blur(70px);
+}
+
+.contact-form .form-control,
+.contact-form select,
+.contact-form textarea {
+background: #f8fbff;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 14px 16px;
+font-size: 15px;
+transition: all 0.25s ease;
 }
 
 .form-control {
-    border-radius: 10px;
-    padding: 1rem;
-    border: 2px solid #e2e8f0;
-    transition: all 0.3s ease;
+border-radius: 14px;
+border: 1px solid var(--border-soft);
 }
-
 .form-control:focus {
     border-color: var(--primary-blue);
     box-shadow: 0 0 0 3px rgba(45,91,227,0.1);
@@ -381,7 +449,7 @@ body {
 
 /* Large desktops */
 @media (max-width: 1200px) {
-    .hero{margin-top: 10px ;}
+    .hero{margin-top: 35px ;}
     .hero h1 { font-size: 3rem; }
     .hero p { font-size: 1.15rem; }
     .hero-stats { gap: 2rem; }
@@ -389,7 +457,7 @@ body {
 
 /* Laptops */
 @media (max-width: 992px) {
-.hero{margin-top: 6px ;}
+.hero{margin-top: 22px ;}
     .hero h1 { font-size: 2.6rem; }
     .hero p { font-size: 1.1rem; }
     .card-icon { width: 70px; height: 70px; font-size: 2rem; }
@@ -397,7 +465,7 @@ body {
 
 /* Tablets */
 @media (max-width: 768px) {
-    .hero{margin-top: 15px ;}
+    .hero{margin-top: 22px ;}
     .hero h1 { font-size: 2.4rem; text-align: center; }
     .hero p { font-size: 1rem; text-align: center; }
     .hero-stats { flex-direction: row; gap: 1.5rem; justify-content: center; }
@@ -433,7 +501,7 @@ body {
 
 /* Small mobiles */
 @media (max-width: 576px) {
-    .hero{margin-top: 25px ;}
+    .hero{margin-top: 20px ;}
     .hero h1 { font-size: 2rem; }
     .hero p { font-size: 0.95rem; }
     .section-title { font-size: 2rem; }
@@ -446,7 +514,7 @@ body {
 
 /* Extra small phones */
 @media (max-width: 400px) {
-    .hero{margin-top: 48px ;}
+    .hero{margin-top: 28px ;}
     .hero { padding: 80px 15px; min-height: 500px; }
     .hero h1 { font-size: 1.8rem; }
     .hero p { font-size: 0.9rem; }
@@ -512,23 +580,19 @@ body {
 } */
 
 #services {
-    background: #e6f0ff; /* light blue */
-    color: #1e293b;      /* dark text */
+background: linear-gradient(to bottom, #ffffff, #f8fbff);
 }
 
 #fbr {
-    background: #e6fdf3; /* light green */
-    color: #1e293b;      /* dark text */
+background: linear-gradient(to bottom, #f3f8ff, #eaf2ff);
 }
 
 #clients {
-    background: #f5f3ff; /* light violet */
-    color: #1e293b;      /* dark text */
+background: linear-gradient(to bottom, #ffffff, #f5f9ff);
 }
 
 #contact {
-    background: #fff7e6; /* light yellow */
-    color: #1e293b;      /* dark text */
+background: linear-gradient(to bottom, #f0f6ff, #e6f0ff);
 }
 
 /* Cards inside sections */
@@ -1007,91 +1071,104 @@ body {
                             <div class="contact-form fade-in">
                                 <form id="contactForm" class="needs-validation"
                                     novalidate>
-                                    <div class="row mb-4">
-                                        <div class="col-md-4 mb-3">
-                                            <input type="text"
-                                                class="form-control" name="name"
-                                                placeholder="Your Name"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please enter your name </div>
+                                    <div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-4 mb-3">
+                                                <input type="text"
+                                                    class="form-control"
+                                                    name="name"
+                                                    placeholder="Your Name"
+                                                    required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your name
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3"> <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    name="email"
+                                                    placeholder="Email Address"
+                                                    required> <div
+                                                    class="invalid-feedback">
+                                                    Please
+                                                    enter a valid email address
+                                                </div> </div>
+
+                                            <div class="col-md-4 mb-3"> <input
+                                                    type="tel"
+                                                    class="form-control"
+                                                    name="phone"
+                                                    placeholder="03XXXXXXXXX or +923XXXXXXXXX"
+                                                    required
+                                                    pattern="^(\+923[0-9]{9}|03[0-9]{9})$"
+                                                    maxlength="11"
+                                                    title="Enter valid Pakistani number">
+                                                <div class="invalid-feedback">
+                                                    Enter
+                                                    valid Pakistani phone number
+                                                </div> </div>
+
                                         </div>
-                                        <div class="col-md-4 mb-3"> <input
-                                                type="email"
-                                                class="form-control"
-                                                name="email"
-                                                placeholder="Email Address"
-                                                required> <div
-                                                class="invalid-feedback"> Please
-                                                enter a valid email address
-                                            </div> </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-6 mb-3"> <select
+                                                    class="form-control"
+                                                    name="business_type"
+                                                    required>
+                                                    <option value selected
+                                                        disabled>Select Business
+                                                        Type</option> <option
+                                                        value="Retail Shop">Retail
+                                                        Shop</option> <option
+                                                        value="Restaurant/Cafe">Restaurant/Cafe</option>
+                                                    <option
+                                                        value="Manufacturing">Manufacturing</option>
+                                                    <option
+                                                        value="Services">Services</option>
+                                                    <option
+                                                        value="Freelancer">Freelancer</option>
+                                                    <option
+                                                        value="Other">Other</option>
+                                                </select> <div
+                                                    class="invalid-feedback">
+                                                    Please
+                                                    select business type </div>
+                                            </div>
 
-                                        <div class="col-md-4 mb-3"> <input
-                                                type="tel" class="form-control"
-                                                name="phone"
-                                                placeholder="03XXXXXXXXX or +923XXXXXXXXX"
-                                                required
-                                                pattern="^(\+923[0-9]{9}|03[0-9]{9})$"
-                                                maxlength="11"
-                                                title="Enter valid Pakistani number">
-                                            <div class="invalid-feedback"> Enter
-                                                valid Pakistani phone number
-                                            </div> </div>
-
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col-md-6 mb-3"> <select
-                                                class="form-control"
-                                                name="business_type" required>
-                                                <option value selected
-                                                    disabled>Select Business
-                                                    Type</option> <option
-                                                    value="Retail Shop">Retail
-                                                    Shop</option> <option
-                                                    value="Restaurant/Cafe">Restaurant/Cafe</option>
-                                                <option
-                                                    value="Manufacturing">Manufacturing</option>
-                                                <option
-                                                    value="Services">Services</option>
-                                                <option
-                                                    value="Freelancer">Freelancer</option>
-                                                <option
-                                                    value="Other">Other</option>
-                                            </select> <div
-                                                class="invalid-feedback"> Please
-                                                select business type </div>
+                                            <div class="col-md-6 mb-3">
+                                                <select class="form-control"
+                                                    name="plan_interest"
+                                                    required>
+                                                    <option value selected
+                                                        disabled>Plan of
+                                                        Interest</option>
+                                                    <option>Digital
+                                                        e-Invoicia</option>
+                                                    <option>POS
+                                                        e-Invoicia</option>
+                                                    <option>Enterprise
+                                                        Solution</option>
+                                                    <option>Not Sure</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select plan of
+                                                    interest
+                                                </div> </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <textarea class="form-control"
+                                                name="message" rows="5"
+                                                placeholder="Tell us about your invoicing needs..."
+                                                required></textarea>
+                                        </div>
+                                        <div class="d-grid">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg py-3">
+                                                <i
+                                                    class="fas fa-paper-plane me-2"></i>Send
+                                                Message
+                                            </button>
                                         </div>
 
-                                        <div class="col-md-6 mb-3">
-                                            <select class="form-control"
-                                                name="plan_interest" required>
-                                                <option value selected
-                                                    disabled>Plan of
-                                                    Interest</option>
-                                                <option>Digital
-                                                    e-Invoicia</option>
-                                                <option>POS e-Invoicia</option>
-                                                <option>Enterprise
-                                                    Solution</option>
-                                                <option>Not Sure</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please select plan of interest
-                                            </div> </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <textarea class="form-control"
-                                            name="message" rows="5"
-                                            placeholder="Tell us about your invoicing needs..."
-                                            required></textarea>
-                                    </div>
-                                    <div class="d-grid">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-lg py-3">
-                                            <i
-                                                class="fas fa-paper-plane me-2"></i>Send
-                                            Message
-                                        </button>
                                     </div>
                                     <!-- <p class="text-center text-muted mt-3">We
                                         respond within 2 business hours</p> -->
@@ -1104,7 +1181,7 @@ body {
 
             <!-- Footer -->
             <footer
-                style="background: #f8fbff; color: black; padding: 40px 0 30px; border-top: 4px solid #2563eb; margin-top: 60px;">
+                style="background: #f8fbff; color: black; padding: 40px 0 30px; margin-top: 0px;">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 text-center text-md-start">
