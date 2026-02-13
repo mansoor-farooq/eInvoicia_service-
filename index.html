@@ -570,6 +570,69 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.1);
         }
 
+        /* Mobile Navbar Fix & Enhancement */
+@media (max-width: 991.98px) {
+    /* Collapse background */
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 16px;
+        padding: 1rem 1.25rem;
+        margin-top: 0.75rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Nav links stacked with proper spacing */
+    .navbar-nav {
+        flex-direction: column !important;
+        gap: 0.4rem;
+    }
+.navbar-collapse.collapse.show {
+    animation: slideDown 0.35s ease forwards;
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-15px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1.25rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* CTA button full width, centered */
+    .nav-cta {
+        width: 100%;
+        margin: 0.5rem 0 0 0;
+        justify-content: center;
+    }
+
+    /* Optional: smaller toggler icon */
+    .navbar-toggler i {
+        font-size: 1.3rem;
+    }
+}
+
+/* Extra small devices – perfect fit */
+@media (max-width: 576px) {
+    .navbar-collapse {
+        padding: 0.8rem 1rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.95rem;
+        padding: 0.65rem 1rem;
+    }
+
+    .nav-cta {
+        font-size: 0.95rem;
+        padding: 0.6rem 0;
+    }
+}
+
         /* Responsive fine-tuning */
         @media (max-width: 992px) {
             .hero h1 { font-size: 2.6rem; }
@@ -614,7 +677,7 @@
                 <a class="navbar-brand" href="#home">
                     <img src="./src/DigitalEinvoicia.png"
                         alt="Digital e-Invoicia">
-                    <span>Digital e‑Invoicia</span>
+
                 </a>
                 <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -1159,134 +1222,123 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            // ---------- NAVBAR SCROLL EFFECT ----------
+        const navbar = document.getElementById('mainNavbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 30) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        // Trigger once in case page loads scrolled
+        if (window.scrollY > 30) navbar.classList.add('scrolled');
 
-    // ---------- Phone Input Validation ----------
-    const phoneInput = document.querySelector('[name="phone"]');
-    phoneInput.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9+]/g, '');
+        // ---------- ACTIVE NAV LINK ON SCROLL ----------
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-        if (this.value.startsWith('03') && this.value.length > 11) {
-            this.value = this.value.slice(0, 11);
-        }
-        if (this.value.startsWith('+923') && this.value.length > 13) {
-            this.value = this.value.slice(0, 13);
-        }
-    });
-
-    // ---------- EmailJS Setup ----------
-    const SERVICE_ID = 'service_ljyw2id';
-    const TEMPLATE_ID = 'template_pxv5f99';
-    const PUBLIC_KEY = 'KWzmyBJioWnqDI0LF';
-
-    emailjs.init(PUBLIC_KEY);
-
-    const form = document.getElementById("contactForm");
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        // Form validation
-        if (!this.checkValidity()) {
-            event.stopPropagation();
-            this.classList.add("was-validated");
-            return;
-        }
-        this.classList.add("was-validated");
-
-        // Collect form data
-        const params = {
-            name: this.name.value.trim(),
-            email: this.email.value.trim(),
-            phone: this.phone.value.trim(),
-            business_type: this.business_type.value,
-            plan_interest: this.plan_interest.value,
-            message: this.message.value.trim(),
-            time: new Date().toLocaleString()
-        };
-
-        // Send email
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
-        .then(() => {
-            Swal.fire({
-                icon: "success",
-                title: "Sent!",
-                text: "Your message has been sent successfully.",
-                confirmButtonColor: "#2d5be3",
-                backdrop: "rgba(0,0,0,0.6)"
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
             });
-            this.reset();
-            this.classList.remove("was-validated");
-        })
-        .catch(() => {
-            Swal.fire({
-                icon: "error",
-                title: "Oops!",
-                text: "Message not sent. Try again later.",
-                confirmButtonColor: "#e53e3e",
-                backdrop: "rgba(0,0,0,0.6)"
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
             });
         });
-    });
 
-    // ---------- Navbar Scroll Effect ----------
-    const navbar = document.getElementById('mainNavbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // ---------- Smooth Scroll for Anchor Links ----------
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+        // ---------- PHONE INPUT VALIDATION & EMAILJS ----------
+        document.addEventListener("DOMContentLoaded", function() {
+            const phoneInput = document.querySelector('[name="phone"]');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function() {
+                    this.value = this.value.replace(/[^0-9+]/g, '');
+                    if (this.value.startsWith('03') && this.value.length > 11) {
+                        this.value = this.value.slice(0, 11);
+                    }
+                    if (this.value.startsWith('+923') && this.value.length > 13) {
+                        this.value = this.value.slice(0, 13);
+                    }
                 });
             }
-        });
-    });
 
-    // ---------- Active Nav Link on Scroll ----------
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
+            // EmailJS
+            const SERVICE_ID = 'service_ljyw2id';
+            const TEMPLATE_ID = 'template_pxv5f99';
+            const PUBLIC_KEY = 'KWzmyBJioWnqDI0LF';
+            emailjs.init(PUBLIC_KEY);
 
-    window.addEventListener('scroll', function() {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
+            const form = document.getElementById("contactForm");
+            if (form) {
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    if (!this.checkValidity()) {
+                        event.stopPropagation();
+                        this.classList.add("was-validated");
+                        return;
+                    }
+                    this.classList.add("was-validated");
+
+                    const params = {
+                        name: this.name.value.trim(),
+                        email: this.email.value.trim(),
+                        phone: this.phone.value.trim(),
+                        business_type: this.business_type.value,
+                        plan_interest: this.plan_interest.value,
+                        message: this.message.value.trim(),
+                        time: new Date().toLocaleString()
+                    };
+
+                    emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
+                        .then(() => {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Sent!",
+                                text: "Your message has been sent successfully.",
+                                confirmButtonColor: "#2d5be3",
+                                backdrop: "rgba(0,0,0,0.6)"
+                            });
+                            this.reset();
+                            this.classList.remove("was-validated");
+                        })
+                        .catch(() => {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops!",
+                                text: "Message not sent. Try again later.",
+                                confirmButtonColor: "#e53e3e",
+                                backdrop: "rgba(0,0,0,0.6)"
+                            });
+                        });
+                });
             }
-        });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
-    });
-});
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    if (window.scrollY > 50) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
-  }, 10);
-});
-
-</script>
+    </script>
 
     </body>
 </html>
